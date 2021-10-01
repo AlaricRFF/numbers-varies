@@ -10,7 +10,7 @@ void isTriangle(int num);
 
 void isPower(int num);
 
-void isConSquare(int num);
+void isConSquare(const int& num);
 
 void isAbundant(int num);
 
@@ -95,21 +95,18 @@ void isConSquare(const int& num) {
         cout << "Pass" << endl;
         return;
     }else{
-        // first determine the rough range of the conSumSquare
-        // starting from one
-        int threshold = squareRootM;
-        if (num < sumOfConSquare(1,squareRootM))
-        // looking lower upper bound for entry "one" // most important
-        {
-            while (num < sumOfConSquare(1,threshold)){
-                if (num == sumOfConSquare(1,threshold)){
+        for (int begin = 1; begin < squareRootM; ++begin) {
+            int  threshold = begin + 1;
+            while( num >= sumOfConSquare(begin,threshold)){
+                if (num == sumOfConSquare(begin,threshold)){
                     cout << "Pass" << endl;
                     return;
-                }
-                threshold --;
+                }else
+                threshold ++ ;
             }
         }
     }
+    cout << "Fail" << endl;
 }
 
 void isAbundant(int num) {
