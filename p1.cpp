@@ -95,15 +95,19 @@ void isConSquare(const int& num) {
         cout << "Pass" << endl;
         return;
     }else{
+        int tag = 2;
+        // tag is the greatest possible lower bound that the squares adding must reach
         for (int begin = 1; begin < squareRootM; ++begin) {
-            int  threshold = begin + 1;
-            while( num >= sumOfConSquare(begin,threshold)){
+            int  threshold = tag; // tag is originally set to 2
+            while(  sumOfConSquare(begin,threshold) <= num){
                 if (num == sumOfConSquare(begin,threshold)){
                     cout << "Pass" << endl;
                     return;
                 }else
                 threshold ++ ;
             }
+            // before, the addition to threshold is greater than $(num)
+            tag = threshold - 1;
         }
     }
     cout << "Fail" << endl;
