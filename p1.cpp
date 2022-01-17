@@ -128,3 +128,6 @@ void isAbundant(int num) {
         cout << "Fail" << endl;
 }
 
+void newFeature(){
+	cout <<"hello world!"<<endl;
+}
